@@ -8,13 +8,11 @@ public class ContainerCounter : BaseCounter
 
     public override void Interact(Player player)
     {
-        if (player.HasKitchenObject())
+        if (!player.HasKitchenObject())
         {
-            return;
+            KitchenObject.SpawnKitchenObject(kitchenObjectSO, player);
+
+            OnPlayerGrabbedObject?.Invoke(this, EventArgs.Empty);
         }
-
-        KitchenObject.SpawnKitchenObject(kitchenObjectSO, player);
-
-        OnPlayerGrabbedObject?.Invoke(this, EventArgs.Empty);
     }
 }

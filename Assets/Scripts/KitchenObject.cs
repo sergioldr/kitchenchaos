@@ -21,6 +21,7 @@ public class KitchenObject : MonoBehaviour
 
         this.kitchenObjectParent = kitchenObjectParent;
 
+
         if (kitchenObjectParent.HasKitchenObject())
         {
             throw new System.Exception("KitchenObjectParent already has a KitchenObject");
@@ -28,8 +29,12 @@ public class KitchenObject : MonoBehaviour
 
         kitchenObjectParent.SetKitchenObject(this);
 
+
+
         transform.parent = kitchenObjectParent.GetKitchenObjectTransform();
         transform.localPosition = Vector3.zero;
+
+
     }
 
     public IKitchenObjectParent GetKitchenObjectParent()
