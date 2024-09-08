@@ -30,6 +30,16 @@ public class CuttingCounter : BaseCounter, IHasProgress
             {
                 GetKitchenObject().SetKitchenObjectParent(player);
             }
+            else if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject))
+            {
+                bool hasAddedIngredient = plateKitchenObject.TryAddIngredient(GetKitchenObject().GetKitchenObjectSO());
+
+                if (hasAddedIngredient)
+                {
+                    Debug.Log("CuttingCounter: Interact: Destroying self");
+                    GetKitchenObject().DestroySelf();
+                }
+            }
         }
     }
 
